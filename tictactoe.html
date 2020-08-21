@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banco</title>
+</head>
+<body>
+<h2>Game caro simple</h2>
+<p id="carogame"></p>
+<input type="button" value="person1" onclick="person('x');">
+<input type="button" value="person2" onclick="person('o');">
+<script>
+    let b = document.getElementById("carogame");
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 5; i++) {
+        board [i] = [".", ".", ".", ".", "."];
+    }
+    for (let i = 0; i < 5; i++) {
+        data += "<br>";
+        for (let j = 0; j < 5; j++) {
+            data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp";
+        }
+    }
+    b.innerHTML = data;
+
+    function person(xo) {
+        let b = document.getElementById("carogame");
+        let positionX = parseInt(prompt("X:"));
+        let positionY = parseInt(prompt("Y:"));
+        let data = "";
+        if (board[positionX][positionY] == ".") {
+            board[positionX][positionY] = "x";
+
+            for (let i = 0; i < 5; i++) {
+                data += "<br>";
+                for (let j = 0; j < 5; j++) {
+                    data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp";
+                }
+            }
+            b.innerHTML = data;
+        } else {
+            alert(" nhap lai vi tri");
+
+        }
+        if (personWin(xo)) {
+            alert("Person " + xo + " win!");
+        }
+
+    }
+
+    // function person2() {
+    //     let b = document.getElementById("carogame");
+    //     let positionX = parseInt(prompt("X:"));
+    //     let positionY = parseInt(prompt("Y:"));
+    //     let data = "";
+    //     if (board[positionX][positionY] == ".") {
+    //         board[positionX][positionY] = "o";
+    //         for (let i = 0; i < 5; i++) {
+    //             data += "<br>";
+    //             for (let j = 0; j < 5; j++) {
+    //                 data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp";
+    //             }
+    //         }
+    //         b.innerHTML = data;
+    //     } else {
+    //         alert(" nhap lai vi tri");
+    //     }
+    //     if (person2Win()) {
+    //         alert("Person 2 win!");
+    //     }
+    // }
+
+    function person1Win() {
+        for (let i = 0; i < 5 && i < 0; i++) {
+            for (let j = 0; j < 5 && j<0 ; j++) {
+                if ((board[i][j] == "x" && board[i][j += 1] == "x" && board[i][j += 2] == "x") || (board[i][j] == "x" && board[i += 1][j] == "x" && board[i += 2][j] == "x")
+                    || (board[i][j] == "x" && board[i += 1][j += 1] == "x" && board[i += 2][j += 2] == "x")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        }
+    }
+    function person2Win() {
+        for (let i = 0; i < 5 && i < 0; i++) {
+            for (let j = 0; j < 5 && j<0 ; j++) {
+                if ((board[i][j] == "o" && board[i][j += 1] == "o" && board[i][j += 2] == "o") || (board[i][j] == "o" && board[i += 1][j] == "o" && board[i += 2][j] == "o")
+                    || (board[i][j] == "o" && board[i += 1][j += 1] == "o" && board[i += 2][j += 2] == "o")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        }
+    }
+    // for (let i = 0; i < 5 && i >= 0; i++) {
+    //     for (let j = 0; j < 5 && j >= 0; j++) {
+    //         if ((board[i][j] == "x" && board[i][j += 1] == "x" && board[i][j = +2] == "x") || (board[i][j] == "x" && board[i = +1][j] == "x" && board[i = +2][j] == "x")
+    //             || (board[i][j] == "x" && board[i = +1][j += 1] == "x" && board[i = +2][j = +2] == "x")) {
+    //             alert("Person1: win!!!");
+    //         } else if ((board[i][j] == board[i][j += 1] == board[i][j = +2] == "o") || (board[i][j] == board[i = +1][j] == board[i = +2][j] == "o")
+    //             || (board[i][j] == board[i = +1][j += 1] == board[i = +2][j = +2] == "o") || (board[i][j] == "x" && board[i += 1][j -= 1] == "x" && board[i += 2][j -= 2] == "x")) {
+    //             alert("Person2: win!!!");
+    //         }
+    //     }
+    // }
+</script>
+</body>
+</html>
